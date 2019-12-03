@@ -12,7 +12,7 @@ def compute(program)
   }
 
   program.each_slice(4) do |slice|
-    opcode, input_1, input_2, output = slice[0..3]
+    opcode, input_1, input_2, output = slice
 
     if operation.fetch(opcode) == :halt
       break
@@ -33,18 +33,21 @@ puts compute(p4.dup).inspect # => [30, 1, 1, 4, 2, 5, 6, 0, 99]
 puts compute(p5.dup)[0] # => 3_654_868
 
 # part 2
-0.upto(99).each do |noun|
-  0.upto(99).each do |verb|
-    program = p5.dup
-    program[1] = noun
-    program[2] = verb
+class Halt < StandardError
+end
 
-    if compute(program)[0] == 19_690_720
-      puts "100 * #{noun} + #{verb}:"
-      puts 100 * noun + verb
-      break
+begin
+  0.upto(99).each do |noun|
+    0.upto(99).each do |verb|
+      program = p5.dup
+      program[1] = noun
+      program[2] = verb
+
+      if compute(program)[0] == 19_690_720
+        raise Halt, "100 * #{noun} + #{verb} = #{100 * noun + verb}"
+      end
     end
   end
+rescue Halt => e
+  puts e.message # => 100 * 70 + 14 = 7014
 end
-# => 100 * 70 + 14:
-# => 7014
