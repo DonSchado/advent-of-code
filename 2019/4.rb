@@ -7,11 +7,11 @@ passwords = range.select do |number|
   eval(incrementing) && number.to_s.match?(/(\d)\1/)
 end
 
-"1: different passwords:"
+puts "1: different passwords:"
 puts passwords.uniq.size
 # => 460
 
 # part 2
-
-# THERE I CHEATED!?
+puts "2: repeated criteria"
+puts passwords.select { |p| p.to_s.split('').tally.any? { |_d, count| count == 2 } }.size
 # => 290
