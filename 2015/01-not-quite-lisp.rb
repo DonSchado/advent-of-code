@@ -2,10 +2,12 @@
 input = DATA.read.chomp.split('')
 
 # part 1
+puts 'To what floor do the instructions take Santa?'
 puts input.map { |p| p == '(' ? 1 : -1 }.reduce(:+)
 # => 232
 
 # part 2
+puts 'What is the position of the character that causes Santa to first enter the basement?'
 input.each_with_object([]) do |p, memo|
   memo << (p == '(' ? 1 : -1)
 
