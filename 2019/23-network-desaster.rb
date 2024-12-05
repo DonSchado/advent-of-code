@@ -1,4 +1,4 @@
-require './intcode'
+require_relative 'intcode'
 
 # Network Interface Controller (NIC) software
 program = DATA.read.chomp.split(',').map(&:to_i)

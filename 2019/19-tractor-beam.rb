@@ -1,4 +1,4 @@
-require './intcode'
+require_relative 'intcode'
 
 require 'yaml'
 

@@ -1,4 +1,4 @@
-require './intcode'
+require_relative 'intcode'
 
 program = DATA.read.chomp.split(',').map(&:to_i)
 

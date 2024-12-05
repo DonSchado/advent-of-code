@@ -1,4 +1,4 @@
-require './intcode'
+require_relative 'intcode'
 
 remote_control_program = DATA.read.chomp.split(',').map(&:to_i)
 
